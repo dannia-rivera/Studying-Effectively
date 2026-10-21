@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studying Effectively</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header><span class="logo">📚 Studying Effectively</span><span class="tag">HCI Project Prototype</span></header>
+    <section class="intro"><h1>Make your study time count.</h1><p>Set a goal, stay on track, and see how much you've accomplished.</p></section>
+    <div class="layout">
+      <section class="panel timer-panel">
+        <h2>Study Timer</h2><p class="muted">Choose a mode and start your session.</p>
+        <div class="modes"><button class="mode selected" data-minutes="25">Focus · 25 min</button><button class="mode" data-minutes="5">Short break · 5 min</button><button class="mode" data-minutes="15">Long break · 15 min</button></div>
+        <div class="timer" id="timer" aria-live="polite">25:00</div>
+        <div class="controls"><button id="start" class="primary">Start</button><button id="pause">Pause</button><button id="reset">Reset</button></div>
+        <p class="hint">Tip: take a short break after a focus session.</p>
+      </section>
+      <section class="side">
+        <section class="panel"><h2>Today's Progress</h2><p class="muted">Completed focus sessions</p><div class="count" id="sessions">0</div><p class="muted" id="total">0 minutes completed</p></section>
+        <section class="panel"><h2>Study Goal</h2><label for="goal">Goal for today (minutes)</label><input id="goal" type="number" min="1" max="1440" value="50"><div class="progress"><div id="progress-bar"></div></div><p class="muted" id="goal-label">0 / 50 minutes</p></section>
+        <section class="panel"><h2>Camera Preview</h2><div class="camera" id="camera-placeholder">Camera is off</div><video id="video" autoplay muted playsinline hidden></video><button id="camera-toggle">Turn on camera</button><p class="muted small">Optional preview only. Automatic attention tracking is not implemented yet.</p></section>
+      </section>
+    </div>
+    <footer>Studying Effectively · Student project prototype</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
