@@ -1,4 +1,4 @@
-const timerDisplay = document.getElementById('timer');
+﻿const timerDisplay = document.getElementById('timer');
 const modeButtons = document.querySelectorAll('.mode');
 const sessionDisplay = document.getElementById('sessions');
 const totalDisplay = document.getElementById('total');
@@ -49,19 +49,5 @@ modeButtons.forEach(button => button.addEventListener('click', () => {
   renderTimer();
 }));
 goalInput.addEventListener('input', updateProgress);
-const cameraButton = document.getElementById('camera-toggle');
-const video = document.getElementById('video');
-const cameraPlaceholder = document.getElementById('camera-placeholder');
-let stream = null;
-cameraButton.addEventListener('click', async () => {
-  if (stream) { stream.getTracks().forEach(track => track.stop()); stream = null; video.srcObject = null; video.hidden = true; cameraPlaceholder.hidden = false; cameraButton.textContent = 'Turn on camera'; return; }
-  try {
-    stream = await navigator.mediaDevices.getUserMedia({video:true,audio:false});
-    video.srcObject = stream;
-    video.hidden = false;
-    cameraPlaceholder.hidden = true;
-    cameraButton.textContent = 'Turn off camera';
-  } catch (error) { alert('Camera access is unavailable. Allow camera permission and try localhost or HTTPS.'); }
-});
-window.addEventListener('pagehide', () => { if(stream) stream.getTracks().forEach(track=>track.stop()); });
 renderTimer(); updateProgress();
+
