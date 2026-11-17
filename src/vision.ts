@@ -1,9 +1,9 @@
-import { FaceLandmarker, FilesetResolver } from '@mediapipe/tasks-vision';
+﻿import { FaceLandmarker, FilesetResolver } from '@mediapipe/tasks-vision';
 import type { Features } from './types';
 
 export class FaceVision {
   private constructor(private model: FaceLandmarker) {}
-  static async create(modelUrl='/models/face_landmarker.task', wasmUrl='/mediapipe/wasm') {
+  static async create(modelUrl=new URL('models/face_landmarker.task', document.baseURI).href, wasmUrl=new URL('mediapipe/wasm', document.baseURI).href) {
     const vision = await FilesetResolver.forVisionTasks(wasmUrl);
     const model = await FaceLandmarker.createFromOptions(vision, {
       baseOptions: { modelAssetPath: modelUrl, delegate: 'CPU' },
@@ -30,3 +30,4 @@ export class FaceVision {
   }
   close() { this.model.close(); }
 }
+
